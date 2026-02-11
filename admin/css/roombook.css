@@ -1,0 +1,614 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* Futuristic Color Palette */
+  --primary-bg: #0a0a0f;
+  --secondary-bg: #1a1a2e;
+  --accent-bg: #16213e;
+  --card-bg: rgba(26, 26, 46, 0.9);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  
+  /* Neon Colors */
+  --neon-blue: #00d4ff;
+  --neon-purple: #8b5cf6;
+  --neon-cyan: #06ffa5;
+  --neon-pink: #ff006e;
+  --neon-orange: #ff8500;
+  --neon-yellow: #ffd700;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  /* Shadows & Effects */
+  --glow-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  /* Borders */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+  --neon-border: 1px solid var(--neon-blue);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+}
+
+body {
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Animated Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(6, 255, 165, 0.03) 0%, transparent 50%);
+  animation: backgroundShift 20s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes backgroundShift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-20px) translateY(-20px); }
+  50% { transform: translateX(20px) translateY(-10px); }
+  75% { transform: translateX(-10px) translateY(20px); }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+i {
+  font-size: 16px;
+}
+
+/* Enhanced Search Section */
+.searchsection {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: var(--glass-border);
+  position: fixed;
+  z-index: 500;
+  box-shadow: var(--glass-shadow);
+  padding: 0 2rem;
+  gap: 1.5rem;
+}
+
+.searchsection::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+#search_bar {
+  height: 48px;
+  width: 60%;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 0 1.5rem;
+  border-radius: 24px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+#search_bar::placeholder {
+  color: var(--text-secondary);
+}
+
+#search_bar:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+#adduser {
+  height: 48px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border: none;
+  border-radius: 24px;
+  padding: 0 2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+#adduser::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+#adduser:hover::before {
+  left: 0;
+}
+
+#adduser:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+}
+
+.exportexcel {
+  height: 48px;
+  width: 48px;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+  border: none;
+  border-radius: 50%;
+  color: var(--text-primary);
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.exportexcel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--neon-yellow), var(--neon-orange));
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.exportexcel:hover::before {
+  left: 0;
+}
+
+.exportexcel:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(6, 255, 165, 0.3);
+}
+
+/* Guest Panel */
+#guestdetailpanel {
+  position: fixed;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+#guestdetailpanel .guestdetailpanelform {
+  height: 620px;
+  width: 90%;
+  max-width: 1170px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  animation: guestinfoform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-cyan);
+}
+
+@keyframes guestinfoform {
+  0% {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.guestdetailpanelform .head {
+  padding: 1.5rem 2rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--secondary-bg), var(--accent-bg));
+  position: relative;
+}
+
+.guestdetailpanelform .head::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+}
+
+.guestdetailpanelform .head h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.guestdetailpanelform .head i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.guestdetailpanelform .head i:hover {
+  color: var(--neon-pink);
+  background: rgba(255, 0, 110, 0.1);
+  transform: rotate(90deg);
+}
+
+.guestdetailpanelform .middle {
+  width: 100%;
+  height: 480px;
+  display: flex;
+  background: var(--primary-bg);
+}
+
+.guestdetailpanelform .middle .guestinfo,
+.guestdetailpanelform .middle .reservationinfo {
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.guestdetailpanelform .middle .guestinfo h4,
+.guestdetailpanelform .middle .reservationinfo h4 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.guestdetailpanelform .middle .guestinfo h4::after,
+.guestdetailpanelform .middle .reservationinfo h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 2px;
+}
+
+.line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--neon-blue), transparent);
+}
+
+.guestdetailpanelform .footer {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: var(--glass-bg);
+  border-top: var(--glass-border);
+}
+
+.middle input,
+.selectinput {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.middle input::placeholder {
+  color: var(--text-secondary);
+}
+
+.middle input:focus,
+.selectinput:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.selectinput option {
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+}
+
+.datesection {
+  display: flex;
+  gap: 1rem;
+}
+
+.datesection span {
+  flex: 1;
+}
+
+/* Enhanced Room Book Table */
+.roombooktable {
+  position: absolute;
+  margin-top: 80px;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  color: var(--text-primary);
+}
+
+.roombooktable table {
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+}
+
+.roombooktable thead {
+  background: linear-gradient(135deg, var(--secondary-bg), var(--accent-bg));
+  color: var(--text-primary);
+  text-align: center;
+  position: relative;
+}
+
+.roombooktable thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+}
+
+.roombooktable thead th {
+  padding: 1.25rem 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.roombooktable tbody {
+  text-align: center;
+}
+
+.roombooktable tbody tr {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.roombooktable tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.roombooktable tbody tr:hover {
+  background: rgba(0, 212, 255, 0.05);
+  transform: scale(1.01);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+}
+
+.roombooktable tbody td {
+  padding: 1rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.roombooktable tbody tr:hover td {
+  color: var(--text-primary);
+}
+
+.action a {
+  text-decoration: none;
+}
+
+.action button {
+  margin: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.action button.btn-primary {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  color: var(--text-primary);
+}
+
+.action button.btn-success {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+  color: var(--text-primary);
+}
+
+.action button.btn-danger {
+  background: linear-gradient(135deg, var(--neon-pink), #dc2626);
+  color: var(--text-primary);
+}
+
+.action button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+}
+
+/* Status Badges */
+.status-confirmed {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+  color: var(--text-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-pending {
+  background: linear-gradient(135deg, var(--neon-orange), var(--neon-yellow));
+  color: var(--primary-bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .roombooktable {
+    padding: 1rem;
+  }
+  
+  .guestdetailpanelform {
+    width: 95%;
+    height: auto;
+    max-height: 90vh;
+  }
+  
+  .guestdetailpanelform .middle {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+  }
+  
+  .guestdetailpanelform .middle .guestinfo,
+  .guestdetailpanelform .middle .reservationinfo {
+    width: 100%;
+  }
+  
+  .line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  }
+}
+
+@media (max-width: 768px) {
+  .searchsection {
+    flex-direction: column;
+    height: auto;
+    min-height: 120px;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  #search_bar {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .roombooktable {
+    margin-top: 120px;
+    padding: 0.5rem;
+  }
+  
+  .roombooktable table {
+    font-size: 0.8rem;
+  }
+  
+  .roombooktable thead th,
+  .roombooktable tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .action button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    margin: 0.1rem;
+  }
+}

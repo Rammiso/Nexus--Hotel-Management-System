@@ -1,0 +1,21 @@
+
+# System Files
+Thumbs.db
+.DS_Store
+
+# IDE/Editor
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Logs
+error.log
+access.log
+*.log
+
+# Environment/Config (Optional - keeping config.php for now as it doesn't seem to have sensitive env vars by default)
+# config.php

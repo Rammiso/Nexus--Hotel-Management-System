@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* Futuristic Color Palette */
+  --primary-bg: #0a0a0f;
+  --secondary-bg: #1a1a2e;
+  --accent-bg: #16213e;
+  --card-bg: rgba(26, 26, 46, 0.9);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  
+  /* Neon Colors */
+  --neon-blue: #00d4ff;
+  --neon-purple: #8b5cf6;
+  --neon-cyan: #06ffa5;
+  --neon-pink: #ff006e;
+  --neon-orange: #ff8500;
+  --neon-yellow: #ffd700;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  /* Shadows & Effects */
+  --glow-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  /* Borders */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+  --neon-border: 1px solid var(--neon-blue);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+}
+
+body {
+  background: var(--primary-bg);
+  padding: 2rem;
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Animated Background Grid */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Enhanced Summary Cards */
+.databox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.databox .box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.databox .box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  animation: borderScan 3s ease-in-out infinite;
+}
+
+@keyframes borderScan {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.databox .box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    var(--glass-shadow),
+    0 0 40px rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.4);
+}
+
+.box-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.box-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.box-content {
+  flex: 1;
+}
+
+.box-content h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.box-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.box-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Card-specific colors and animations */
+.totalroomsbox {
+  border-left: 3px solid var(--neon-blue);
+}
+.totalroomsbox .box-icon {
+  background: linear-gradient(135deg, var(--neon-blue), rgba(0, 212, 255, 0.3));
+  color: var(--neon-blue);
+  animation: iconPulse 3s ease-in-out infinite;
+}
+
+.roombookbox {
+  border-left: 3px solid var(--neon-orange);
+}
+.roombookbox .box-icon {
+  background: linear-gradient(135deg, var(--neon-orange), rgba(255, 133, 0, 0.3));
+  color: var(--neon-orange);
+  animation: iconPulse 3s ease-in-out infinite 0.5s;
+}
+
+.availablebox {
+  border-left: 3px solid var(--neon-cyan);
+}
+.availablebox .box-icon {
+  background: linear-gradient(135deg, var(--neon-cyan), rgba(6, 255, 165, 0.3));
+  color: var(--neon-cyan);
+  animation: iconPulse 3s ease-in-out infinite 1s;
+}
+
+.profitbox {
+  border-left: 3px solid var(--neon-purple);
+}
+.profitbox .box-icon {
+  background: linear-gradient(135deg, var(--neon-purple), rgba(139, 92, 246, 0.3));
+  color: var(--neon-purple);
+  animation: iconPulse 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes iconPulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.05);
+    filter: brightness(1.2) drop-shadow(0 0 15px currentColor);
+  }
+}
+
+/* Charts Section */
+.chartbox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.profitchart,
+.bookroomchart {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.profitchart::before,
+.bookroomchart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+  animation: chartGlow 4s ease-in-out infinite;
+}
+
+@keyframes chartGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.bookroomchart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookroomchart h3,
+.profitchart h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.bookroomchart h3::after,
+.profitchart h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 2px;
+}
+
+.bookroomchart canvas {
+  max-width: 100%;
+  height: auto !important;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.1));
+}
+
+/* Morris Chart Styling */
+.morris-hover {
+  background: var(--card-bg) !important;
+  border: var(--glass-border) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Loading States */
+.loading-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 212, 255, 0.3);
+  border-top: 3px solid var(--neon-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .chartbox {
+    grid-template-columns: 1fr;
+  }
+  
+  .databox {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .databox {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .databox .box {
+    padding: 1.5rem;
+  }
+  
+  .box-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .box-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .chartbox {
+    gap: 1.5rem;
+  }
+  
+  .profitchart,
+  .bookroomchart {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .databox .box {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .box-content h1 {
+    font-size: 2rem;
+  }
+}

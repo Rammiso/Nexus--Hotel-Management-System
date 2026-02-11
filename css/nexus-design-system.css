@@ -1,0 +1,228 @@
+/* ========================================
+   THE NEXUS - DESIGN SYSTEM
+   Smart Hospitality Management System
+   ======================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;900&display=swap");
+
+:root {
+  /* ===== PRIMARY COLORS ===== */
+  --nexus-indigo-900: #1e1b4b;
+  --nexus-indigo-800: #312e81;
+  --nexus-indigo-700: #3730a3;
+  --nexus-indigo-600: #4f46e5;
+
+  /* ===== SECONDARY COLORS ===== */
+  --nexus-cyan-500: #06b6d4;
+  --nexus-cyan-400: #22d3ee;
+  --nexus-cyan-600: #0891b2;
+
+  /* ===== ACCENT COLORS ===== */
+  --nexus-purple-400: #a78bfa;
+  --nexus-purple-500: #8b5cf6;
+  --nexus-purple-600: #7c3aed;
+
+  /* ===== NEUTRAL COLORS ===== */
+  --nexus-gray-50: #f9fafb;
+  --nexus-gray-100: #f3f4f6;
+  --nexus-gray-800: #1f2937;
+  --nexus-gray-900: #111827;
+
+  /* ===== GRADIENTS ===== */
+  --nexus-gradient-primary: linear-gradient(
+    135deg,
+    var(--nexus-indigo-800) 0%,
+    var(--nexus-indigo-600) 100%
+  );
+  --nexus-gradient-secondary: linear-gradient(
+    135deg,
+    var(--nexus-cyan-600) 0%,
+    var(--nexus-cyan-400) 100%
+  );
+  --nexus-gradient-accent: linear-gradient(
+    135deg,
+    var(--nexus-purple-600) 0%,
+    var(--nexus-purple-400) 100%
+  );
+  --nexus-gradient-hero: linear-gradient(
+    135deg,
+    rgba(30, 27, 75, 0.95) 0%,
+    rgba(79, 70, 229, 0.85) 100%
+  );
+
+  /* ===== GLASSMORPHISM ===== */
+  --nexus-glass-bg: rgba(255, 255, 255, 0.1);
+  --nexus-glass-border: rgba(255, 255, 255, 0.18);
+  --nexus-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* ===== SHADOWS ===== */
+  --nexus-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --nexus-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --nexus-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --nexus-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --nexus-shadow-glow: 0 0 20px rgba(79, 70, 229, 0.4);
+
+  /* ===== TYPOGRAPHY ===== */
+  --nexus-font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --nexus-font-display: "Orbitron", monospace;
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Glassmorphism Cards */
+.nexus-glass {
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--nexus-glass-border);
+  box-shadow: var(--nexus-glass-shadow);
+}
+
+.nexus-glass-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: var(--nexus-shadow-xl);
+}
+
+/* Gradient Backgrounds */
+.nexus-bg-primary {
+  background: var(--nexus-gradient-primary);
+}
+
+.nexus-bg-secondary {
+  background: var(--nexus-gradient-secondary);
+}
+
+.nexus-bg-accent {
+  background: var(--nexus-gradient-accent);
+}
+
+/* Text Gradients */
+.nexus-text-gradient {
+  background: var(--nexus-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nexus-text-gradient-cyan {
+  background: var(--nexus-gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glowing Effects */
+.nexus-glow {
+  box-shadow: var(--nexus-shadow-glow);
+}
+
+.nexus-glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+/* Modern Button Styles */
+.nexus-btn {
+  font-family: var(--nexus-font-primary);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nexus-btn-primary {
+  background: var(--nexus-gradient-primary);
+  color: white;
+}
+
+.nexus-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--nexus-shadow-glow);
+}
+
+.nexus-btn-secondary {
+  background: var(--nexus-gradient-secondary);
+  color: white;
+}
+
+.nexus-btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--nexus-glow-cyan);
+}
+
+/* Logo Styling */
+.nexus-logo-icon {
+  font-size: 32px;
+  color: var(--nexus-cyan-400);
+  margin-right: 10px;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6));
+}
+
+.nexus-logo-text {
+  font-family: var(--nexus-font-display);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: var(--nexus-gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animations */
+@keyframes nexus-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes nexus-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+  }
+}
+
+.nexus-animate-pulse {
+  animation: nexus-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.nexus-animate-glow {
+  animation: nexus-glow-pulse 2s ease-in-out infinite;
+}
+
+/* Overlay for Hero Sections */
+.nexus-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--nexus-gradient-hero);
+  z-index: 1;
+}
+
+.nexus-overlay-dark {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 27, 75, 0.7) 0%,
+    rgba(17, 24, 39, 0.8) 100%
+  );
+}
