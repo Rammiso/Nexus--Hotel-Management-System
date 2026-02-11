@@ -2,7 +2,7 @@
 
 A comprehensive web-based hotel management system built with **PHP** and **MySQL**. This application provides a user-friendly interface for guests to book rooms and a powerful admin dashboard for hotel staff to manage bookings, rooms, staff, and payments.
 
-![Home Page](redmiimg/home1.jpg)
+<!-- ![Home Page](redmiimg/home1.jpg) -->
 
 ## ✨ Features
 
@@ -66,7 +66,7 @@ A comprehensive web-based hotel management system built with **PHP** and **MySQL
 - **Email**: `tusharpankhaniya2202@gmail.com`
 - **Password**: `123`
 
-## 📸 Screenshots
+<!-- ## 📸 Screenshots
 
 |          Home Page          |          User Login          |
 | :-------------------------: | :--------------------------: |
@@ -74,7 +74,7 @@ A comprehensive web-based hotel management system built with **PHP** and **MySQL
 
 |        Admin Dashboard        |       Room Booking        |
 | :---------------------------: | :-----------------------: |
-| ![Dashboard](redmiimg/d1.jpg) | ![Rooms](redmiimg/d2.jpg) |
+| ![Dashboard](redmiimg/d1.jpg) | ![Rooms](redmiimg/d2.jpg) | -->
 
 ## 🤝 Contribution
 
